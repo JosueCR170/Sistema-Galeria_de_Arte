@@ -1,0 +1,106 @@
+/* Estilo del contenedor de inicio de sesión */
+.login-body{
+    background-image: radial-gradient(circle at center center, transparent,rgb(0,0,0)),linear-gradient(300deg, rgba(198, 198, 198,0.05) 0%, rgba(198, 198, 198,0.05) 50%,rgba(11, 11, 11,0.05) 50%, rgba(11, 11, 11,0.05) 100%),linear-gradient(64deg, rgba(54, 54, 54,0.05) 0%, rgba(54, 54, 54,0.05) 50%,rgba(132, 132, 132,0.05) 50%, rgba(132, 132, 132,0.05) 100%),linear-gradient(17deg, rgba(57, 57, 57,0.05) 0%, rgba(57, 57, 57,0.05) 50%,rgba(128, 128, 128,0.05) 50%, rgba(128, 128, 128,0.05) 100%),linear-gradient(332deg, rgba(97, 97, 97,0.05) 0%, rgba(97, 97, 97,0.05) 50%,rgba(85, 85, 85,0.05) 50%, rgba(85, 85, 85,0.05) 100%),linear-gradient(148deg, rgba(237, 237, 237,0.05) 0%, rgba(237, 237, 237,0.05) 50%,rgba(211, 211, 211,0.05) 50%, rgba(211, 211, 211,0.05) 100%),linear-gradient(142deg, rgba(168, 168, 168,0.05) 0%, rgba(168, 168, 168,0.05) 50%,rgba(32, 32, 32,0.05) 50%, rgba(32, 32, 32,0.05) 100%),linear-gradient(15deg, rgba(225, 225, 225,0.05) 0%, rgba(225, 225, 225,0.05) 50%,rgba(228, 228, 228,0.05) 50%, rgba(228, 228, 228,0.05) 100%),linear-gradient(5deg, rgba(104, 104, 104,0.05) 0%, rgba(104, 104, 104,0.05) 50%,rgba(43, 43, 43,0.05) 50%, rgba(43, 43, 43,0.05) 100%),radial-gradient(circle at center center, hsl(290,5%,8%),hsl(290,5%,8%));
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px); 
+}
+
+h3 {
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+}
+
+.colored-text {
+    color: #DBB385;
+}
+
+label{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 40px;
+    color: #ffffff;
+
+}
+.btn-div{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn{
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #DBB385;
+    border-radius: 5px;
+}
+.sign-in-btn{
+    background-color: transparent;
+    color: #5b5b5b;
+    margin-top: 30px;
+}
+.sign-in-btn:hover{
+    color: #ffffff
+}
+
+.btn:hover {
+    color: #ffffff;
+}
+
+.form-control  {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #000000;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+  }
+  
+  .form-control ::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+  .form-control:focus {
+    border: 2px solid var(--input-focus);
+  }
+
+.buttom-btn{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+ .back{
+    text-decoration: none;
+    color: #eedcdc;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+ .back:hover{
+    color: #987878;
+ }

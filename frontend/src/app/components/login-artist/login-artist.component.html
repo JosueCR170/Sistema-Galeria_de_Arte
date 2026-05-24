@@ -1,0 +1,31 @@
+<div class="col-md-12 login-body">
+    <!-- @if(status===0){
+        <p>Usuario y/o contraseña incorrecta</p>
+    }@else if (status===1) {
+        <p>Error, desde el servidor. Contacte al administrador</p>
+    } -->
+ 
+    <div class="col-md-4 mx-auto login-container">
+        <a class="back" (click)="backLogin()"><i class="fa-solid fa-angle-left"></i></a>
+
+        <form style="padding: 40px;" #loginArtistForm="ngForm" (ngSubmit)="onSubmitArtist(loginArtistForm)">
+            <h3 class="text-center">Log-<span class="colored-text">In </span>ARTIST</h3>
+            
+            <div class="form-group">
+                <input class="form-control" name="email" type="email" placeholder="Email" #correo="ngModel" [(ngModel)]="artist.correo" required>
+            </div>
+            <div class="form-group">
+                <input id="password" class="form-control" name="password" placeholder="Password" type="password" #password="ngModel" [(ngModel)]="artist.password" required>
+            </div>
+            <div class="btn-div">
+                <div>
+                    <input type="submit" class="btn mt-3" value="Log-In" >
+                </div>
+                <div>
+                    <a class="sign-in-btn" [routerLink]="['/signupArtist']" >Sign-up</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

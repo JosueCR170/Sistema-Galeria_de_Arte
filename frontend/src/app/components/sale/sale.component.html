@@ -1,0 +1,349 @@
+<div class="sale-body">
+  <div class="conteiner">
+    <header class="miniMenu">
+      <div class="menu">
+        <input type="checkbox" id="checkbox" />
+        <label for="checkbox" class="toggle">
+          <div class="bars" id="bar1"></div>
+          <div class="bars" id="bar2"></div>
+          <div class="bars" id="bar3"></div>
+        </label>
+        <nav class="nav">
+          <ul style="margin-bottom: 0; padding: 0 0">
+            <li><a href="/shop">Home</a></li>
+            <li class="logout"><a (click)="logOut()">Log out</a></li>
+          </ul>
+        </nav>
+        <div class="nav-left">
+          <li class="nav-item dropdown" style="list-style: none">
+            <a
+              class="nav-link dropdown-toggle user-name"
+              href="#"
+              id="DropdownUser"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ user.nombreUsuario }}</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="downItem" [routerLink]="['/loginArtist']"
+                  >Be artist</a
+                >
+              </li>
+              <li>
+                <a
+                  class="downItem"
+                  (click)="logOut()"
+                  style="color: rgb(184, 72, 72)"
+                  >Log Out</a
+                >
+              </li>
+              @if(user.tipoUsuario){
+              <li><a class="downItem" (click)="loadAdmin()">Admin</a></li>
+              }
+            </ul>
+          </li>
+        </div>
+      </div>
+    </header>
+    <!--Abajo del nav-->
+    <div class="contenido">
+      <div class="formG">
+        <div class="email">
+          <label for="email" style="margin-bottom: 7px">Email</label>
+          <input
+            id="email"
+            class="form-control"
+            name="email"
+            type="email"
+            value="{{ user['email'] }}"
+            required
+            disabled
+          />
+        </div>
+        <div style="margin-bottom: 30px; font-size: 15px; height: 100px">
+          <div class="form-check simpe">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Sinpe Movil
+            </label>
+          </div>
+          <div
+            class="form-check transaccion"
+            style="
+              height: 50%;
+              padding-right: 10px;
+              padding: 0 40px;
+              padding-top: 10px;
+            "
+          >
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Transaccion
+            </label>
+          </div>
+        </div>
+
+        <form
+          class="row g-3"
+          style="margin-bottom: 30px"
+          #saleForm="ngForm"
+          (ngSubmit)="onSubmit(saleForm)"
+        >
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              id="name"
+              value="{{ user['nombre'] }}"
+              disabled
+            />
+          </div>
+          <!-- <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Last</label>
+            <input type="text" class="form-control" required id="inputPassword4">
+          </div> -->
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="example: 1234 Main St"
+              [(ngModel)]="envio.direccion"
+              required
+              name="direccion"
+            />
+          </div>
+          <div class="location">
+            <div>
+              <label for="inputState" class="form-label">Province</label>
+              <select
+                id="inputState"
+                required
+                class="form-select"
+                [(ngModel)]="envio.provincia"
+                name="province"
+              >
+                <option selected disabled hidden>Choose...</option>
+                <option>Guanacaste</option>
+                <option>Alajuela</option>
+                <option>Heredia</option>
+                <option>Puntarenas</option>
+                <option>Limon</option>
+                <option>San Jose</option>
+                <option>Cartago</option>
+              </select>
+            </div>
+            <div>
+              <label for="inputCity" class="form-label">City</label>
+              <input
+                type="text"
+                name="ciudad"
+                class="form-control"
+                id="inputCity"
+                [(ngModel)]="envio.ciudad"
+                required
+              />
+            </div>
+            <div>
+              <label for="inputZip" class="form-label">Code postal</label>
+              <input
+                type="number"
+                name="postalCode"
+                class="form-control"
+                id="inputZip"
+                [(ngModel)]="envio.codigoPostal"
+                required
+              />
+            </div>
+          </div>
+          <select
+            class="form-select form-select-lg mb-5"
+            (change)="updateShippingMethod($event)"
+            name="methodReceiving"
+            [(ngModel)]="selectedOption"
+            required
+          >
+            <option value="" disabled hidden>
+              Select the method of receiving the product
+            </option>
+            <option value="Home delivery">Home delivery</option>
+            <option value="Product recall">Product recall</option>
+          </select>
+
+          <div style="width: 100%; display: flex; justify-content: center">
+            <input
+              type="submit"
+              [disabled]="
+                !isOptionSelected() || saleForm.invalid || obras.length === 0
+              "
+              style="background-color: rgb(120, 37, 37)"
+              class="btn btn-primary compra"
+              value=" Pick up!"
+            />
+            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+            <!-- Modal -->
+          </div>
+        </form>
+      </div>
+
+      <div class="formG-rigth">
+        <div class="card" style="border-bottom: 0">
+          <div *ngFor="let obra of obras" class="cart g-0 cont">
+            <div style="width: 66%">
+              <div class="card-body">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: solid 2px gray;
+                  "
+                >
+                  <h5 class="card-title" style="font-size: 20px">
+                    <strong>{{ obra.nombre }}</strong>
+                  </h5>
+                  <p class="card-text" style="margin-bottom: 25px">
+                    <strong>Price:</strong> {{ obra.precio }}
+                  </p>
+                </div>
+                <div>
+                  <div class="datosResivo" style="margin-top: 10px">
+                    <h6
+                      class=""
+                      style="font-size: 18px; color: rgb(106, 106, 106)"
+                    >
+                      SubTotal
+                    </h6>
+                    <p class="card-text">
+                      <strong style="font-size: 18px">{{ obra.precio }}</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="imgBuy">
+              <img
+                style="object-fit: cover; width: 100%"
+                src="{{ urlAPI }}{{ obra.imagen }}"
+                alt="idk"
+              />
+            </div>
+          </div>
+        </div>
+        <div style="padding: 20px;">
+          <div class="datosResivo mb-2">
+            <h6
+              class="card-title"
+              style="font-size: 18px; color: rgb(0, 0, 0)"
+            >
+              Shipping method (tax)
+            </h6>
+            <p class="card-text">
+              <strong style="font-size: 18px" id="shippingMethod">{{
+                shippingCost
+              }}</strong>
+            </p>
+          </div>
+
+          <div class="datosResivo mb-2" >
+            <h6
+              class="card-title"
+              style="font-size: 18px; color: rgb(0, 0, 0)">
+              Total
+            </h6>
+            <p class="card-text">
+              <strong style="font-size: 18px">{{ totalCost }}</strong>
+            </p>
+        </div>
+        <div class="datosResivo">
+          <h6
+            class="card-title"
+            style="font-size: 18px; color: rgb(0, 0, 0)"
+          >
+            Artist phone:
+          </h6>
+          <p class="card-text" style="margin-bottom: 15px">
+            <strong style="font-size: 18px">{{
+              artista["telefono"]
+            }}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+        </div>
+        
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Take screenshot
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Contact the author
+              <strong>{{ artista["nombreArtista"] }}</strong> to make the
+              payment
+            </p>
+            <p>
+              Artist phone: <strong>{{ artista["telefono"] }}</strong>
+            </p>
+            <p>
+              Artist email: <strong>{{ artista["correo"] }}</strong>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              style="
+                color: rgb(255, 255, 255);
+                background-color: rgb(51, 112, 52);
+                border: none;
+              "
+              class="btn btn-primary"
+            >
+              Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

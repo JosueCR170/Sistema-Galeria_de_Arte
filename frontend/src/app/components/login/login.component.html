@@ -1,0 +1,30 @@
+<div class="col-md-12 login-body">
+
+    <div class="col-md-4 mx-auto login-container"  >
+      
+        <form style="padding: 40px;" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <h3 class="text-center">Log-<span class="colored-text">In</span></h3>
+            <div class="form-group">
+                <input type="text" placeholder="UserName" name="UserName" class="UserName"  #nombreUsuario="ngModel" [(ngModel)]="user.nombreUsuario" required>
+            </div>
+        
+            <div class="form-group">
+                <input class="UserName"  placeholder="Password" name="password" type="password" #password="ngModel" [(ngModel)]="user.password" required>
+            </div>
+            <div class="btn-div">
+                <div>
+                    <input type="submit" class="btn" style="margin-right: 20px;" value="Log-In">
+                </div>
+            <div style="display: flex;">
+                 <div style="margin-right: 20px;">
+                    <a class="sign-in-btn" [routerLink]="['/loginArtist']">Be Artist</a>
+                </div>
+                <div>
+                    <a class="sign-in-btn" [routerLink]="['signup']" >Sign-up</a>
+                </div>    
+            </div>
+               
+            </div>
+        </form>
+    </div>
+</div>

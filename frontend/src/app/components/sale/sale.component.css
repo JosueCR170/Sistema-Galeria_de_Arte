@@ -1,0 +1,367 @@
+.sale-body {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  overflow: auto;
+}
+.conteiner {
+  width: 90%;
+  height: auto;
+}
+
+.miniMenu {
+  position: relative;
+  font-family: "Timmana", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+}
+.menu {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed; /* Fija el navbar */
+  top: 0; /* Posición superior */
+  width: 90%; /* Ocupa todo el ancho */
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+  background-color: #0505058c;
+  backdrop-filter: blur(5px); /* Ajusta según el diseño */
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all 0.5s ease;
+}
+
+.menu #minuInfo {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  font-style: normal;
+  color: antiquewhite;
+  animation: mover-derecha 2s 1;
+}
+.menu nav ul a:hover {
+  color: #000;
+}
+.menu nav ul li {
+  list-style: none; 
+  float: left;
+}
+
+.menu nav ul a {
+  font-family: "Timmana", sans-serif;
+  font-weight: 400;
+  font-style: normal;  
+  font-size: 25px;
+  color: antiquewhite;
+  text-decoration: none;
+  padding: 0 20px;
+  transition: 0.2s ease;
+}
+.menu nav ul a:hover {
+  color: #DBB385;
+  
+}
+.menu nav ul .downItem:hover {
+  color: #000;
+}
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  gap: 10px;
+  transition-duration: .5s;
+}
+
+.bars {
+  width: 100%;
+  height: 4px;
+  background-color: rgb(246, 246, 246);
+  border-radius: 4px;
+}
+
+.nav-left {
+  display: flex;
+  width: 20%;
+  justify-content: space-around;
+}
+.logout {
+  display: none;
+}
+
+#bar2 {
+  transition-duration: .8s;
+}
+
+#bar1, #bar3 {
+  width: 70%;
+}
+
+#checkbox:checked + .toggle .bars {
+  position: absolute;
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar2 {
+  transform: scaleX(0);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar3 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle {
+  transition-duration: .5s;
+  transform: rotate(180deg);
+}
+
+.user-name {
+  display: flex;     
+  align-items: center;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.dropdown-menu.show {
+  border: solid 2px white;
+  background-color: black;
+}
+
+.dropdown-menu li {
+  width: 100%;
+  display: block;
+  cursor: pointer; /* Esto hace que el cursor se convierta en una mano */
+}
+
+.dropdown-menu li:hover {
+  background-color: rgba(195, 187, 255, 0.956);
+}
+
+.downItem {
+  color: bisque;
+  width: 100%;
+  font-size: 20px;
+  text-decoration: none;
+  padding-left: 20px;
+  /*height: 4vh;*/
+  padding-top: 5px;
+  display: block; /* Hace que todo el elemento sea clicable */
+
+}
+.dropdown-menu li:hover .downItem{
+  color: black; /* Esto cambia el color del texto al pasar el mouse por encima */
+  transition: color 0.3s;
+}
+
+@media (max-width: 773px) {
+  .miniMenu {
+      min-height: 70px;
+  }
+  .loOUt {
+      display: none !important;
+  }
+  .menu {
+      height: 60px;
+      padding-left: 20px;
+      background-color: #0505058c;
+  }
+  .menu .toggle {
+      display: inline-flex;
+      gap: 10px;
+  }
+  .menu nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      border-radius: 10px;
+      background-color: #5e5e5eb2;
+      display: none;
+  }
+  .menu nav ul {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+  }
+  .menu nav ul li {
+      width: 100%;
+      text-align: center;
+  }
+  .menu nav ul li:hover {
+      background-color: rgba(76, 150, 173, 0.587);
+  }
+  .menu nav ul a:hover {
+      color: #000;
+  }
+  .container {
+      width: 100vw;
+  }
+  #checkbox:checked ~ nav {
+      display: initial;
+  }
+  .UserIcon {
+      display: none;
+  }
+  .logout {
+      display: initial;
+  }
+  .user-name {
+      font-size: 2vw ;
+  }
+  .busqueda {
+      width: 60% !important;
+  }
+}
+  /*------------------------------------------*/
+  .contenido{
+    margin-top: 6rem; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: 100%;
+  }
+  .formG-rigth{
+    background-color: rgb(255, 255, 255);
+  }
+  .formG{
+    color: white;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+  }
+  .email{
+    margin-bottom: 20px;
+  }
+  .simpe{
+    color: #000;
+    border: solid 1px black; 
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: rgb(156, 193, 194);
+    height: 50%; 
+    padding: 12px 40px 0; 
+    margin: 0;
+  }
+  .transaccion{
+    color: #000;
+    border: solid 1px black;
+    background-color:rgb(156, 193, 194);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  /*acordion*/
+   .compra {
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #343333,
+                -6px -6px 12px #000000;
+   }
+   
+   .compra::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #7d0fd8 0%, #47eaf9 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   .compra:hover::before {
+    width: 9em;
+   }
+   .location{
+    display: grid; 
+    grid-template-columns:  1fr 1fr 1fr; 
+    gap: 2%;
+    margin-bottom: 30px;
+    margin-bottom: 40px;
+    height: 15vh;
+    border-bottom: solid 2px rgb(136, 136, 136);
+   }
+   .datosResivo{
+    display: flex; justify-content: space-between; size: 18px; 
+   }
+ 
+  @media (max-width: 700px) {
+    .conteiner{
+      width: 100%;
+    }
+    .contenido{
+      grid-template-columns: 1fr;
+      margin-top: 0px;
+    }
+  }
+  .modal-title{
+    color: black;
+  }
+  /* Estilo para el texto dentro del modal */
+.modal-body, .modal-body p {
+  color: black;
+}
+
+/* Centrar el modal en la pantalla */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+/* Asegurar que el modal no se bloquee */
+.modal.fade.show {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro cuando el modal está abierto */
+}
+.modal.fade {
+  background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(0,0,0) 0px, rgb(0,0,0) 5px,rgb(0,0,0) 5px, rgb(0,0,0) 17px,rgb(0,0,0) 17px, rgb(0,0,0) 30px,rgb(0,0,0) 30px, rgb(0,0,0) 43px,rgb(0,0,0) 43px, rgb(0,0,0) 45px,rgb(0,0,0) 45px, rgb(0,0,0) 47px); background-size: 53px 53px;
+}
+/* Bloquear la pantalla cuando el modal está abierto */
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+.cont{
+  display: flex;
+
+}
+.imgBuy{
+  width: 34%;
+}

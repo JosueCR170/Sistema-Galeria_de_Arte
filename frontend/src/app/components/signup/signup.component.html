@@ -1,0 +1,71 @@
+<div class="col-md-12 signup-body">
+    <span>
+        @switch (status) {
+
+            @case (1) {
+                <div class="alert alert-warning"><p>Failed to add user!</p></div>
+            }
+            @case (2) {
+                <div *ngFor="let error of errors" class="alert alert-danger">
+                    <p>{{ error }}</p>
+                </div>
+                <!-- <div class="alert alert-danger"><p>Error de servidor!</p></div> -->
+            }
+        }
+        </span>
+    <div class="col-md-4 mx-auto signup-container">
+    <h3>Sign-<span class="colored-text">Up</span></h3>
+    <form class="col-md-8 mx-auto" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+        <div class="form-group">            
+            <label for="name">Name</label>
+            <input id="name" type="text"  #name="ngModel" class="form-control" name="name" 
+                pattern="^(?=.*[a-z])(?=.*[A-Z]).{1,}$" [(ngModel)]="user.nombre" required/>
+                @if(!name.valid && name.touched){
+                    <small class="invalid-feedback d-block">Invalid format</small>
+                }   
+
+            <label for="email">Email</label>
+            <input id="email" type="email" #email="ngModel" class="form-control" name="email" 
+                pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" [(ngModel)]="user.email" required/>
+                @if(!email.valid && email.touched){
+                    <small class="invalid-feedback d-block">Invalid format</small>
+                }
+
+
+            <label for="password">Password</label>
+            <input id="password" type="password" #password="ngModel" class="form-control" name="password"
+            [(ngModel)]="user.password" required/>
+
+
+            <label for="userName">UserName</label>
+            <input id="userName" type="text" #userName="ngModel" class="form-control" name="userName" 
+                 pattern="^(?=.*[a-zA-Z0-9_-])[a-zA-Z0-9_-]{4,}$" [(ngModel)]="user.nombreUsuario" required/>
+                @if(!userName.valid && userName.touched){
+                    <small class="invalid-feedback d-block">Invalid format</small> 
+                }   
+
+
+            <label for="phone">Phone</label>
+            <input id="phone" type="number" #phone="ngModel" class="form-control" name="phone"
+            [(ngModel)]="user.telefono"/>
+                @if(phone == null){
+                    
+                }
+
+        </div> 
+
+        <div class="buttom-btn">
+            <div class="btn-div">      
+                <input type="submit" class="btn mt-2" value="Sign-Up"   [disabled]="signupForm.invalid">
+            </div>
+    
+                <div class="btn-div">      
+                    <a class="back" [routerLink]="['/login']" >Back</a>
+                 </div> 
+         </div>
+     
+    </form>
+    </div>
+</div>
+
+

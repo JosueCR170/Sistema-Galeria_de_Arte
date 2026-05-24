@@ -1,0 +1,81 @@
+<div class="col-md-12 signup-body">
+
+    <span>
+        @switch (status) {
+            <!-- @case (0) {
+                <div class="alert alert-success"><p>Registro exitoso! </p></div>
+                
+            } -->
+            @case (1) {
+                <div class="alert alert-warning"><p>Failed to add artist!</p></div>
+            }
+            @case (2) {
+                <div *ngFor="let error of errors" class="alert alert-danger">
+                    <p>{{ error }}</p>
+                </div>
+                <!-- <div class="alert alert-danger"><p>Error de servidor!</p></div> -->
+            }
+        }
+        </span>
+    
+    <div class="col-md-4 mx-auto signup-container">
+
+    <h3>Sign-<span class="colored-text">Up</span> ARTIST</h3>
+    <form class="col-md-8 mx-auto" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+        <div class="form-group">            
+            <label for="name">Name</label>
+            <input id="name" type="text"  class="form-control" name="name" 
+                pattern="^(?=.*[a-z])(?=.*[A-Z]).{1,}$" #name="ngModel" [(ngModel)]="artista.nombre" required/>
+                @if(!name.valid && name.touched){
+                    <small class="invalid-feedback d-block">Invalid format</small>
+                } 
+
+
+            <label for="email">Email</label>
+            <input id="email" type="email" class="form-control" name="email" 
+                pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" #email="ngModel" [(ngModel)]="artista.correo" required/>
+                @if(!email.valid && email.touched){
+                    <small class="invalid-feedback d-block">Invalid format</small>
+                }
+
+
+            <label for="password">Password</label>
+            <input id="password" type="password"  class="form-control" 
+            name="password" #password="ngModel" [(ngModel)]="artista.password" required>
+            @if(!password.valid && password.touched){
+                <small class="invalid-feedback d-block">Invalid format</small>
+            }
+
+            <label for="user">Artist User</label>
+            <input id="user" type="text" class="form-control" name="user" 
+                pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$" #artistName="ngModel" [(ngModel)]="artista.nombreArtista" required/>
+
+                @if(!artistName.valid && artistName.touched){
+                    <small class="invalid-feedback d-block">Invalid format</small>
+                }
+
+            <label for="phone">Phone</label>
+            <input id="phone" type="number"  class="form-control" name="phone" 
+            #phone="ngModel" [(ngModel)]="artista.telefono" required>
+            @if(!phone.valid && phone.touched){
+                <small class="invalid-feedback d-block">Invalid format</small>
+            }
+
+            <div class="buttom-btn">
+                <div class="btn-div">      
+                    <input type="submit" class="btn mt-2" value="Sign-Up" [disabled]="signupForm.invalid">
+                </div> 
+        
+                <div class="btn-div">      
+                    <a class="back" [routerLink]="['/loginArtist']" >Back</a>
+                </div> 
+             </div>
+        </div> 
+        
+        
+    </form>
+    </div>
+</div>
+
+
+

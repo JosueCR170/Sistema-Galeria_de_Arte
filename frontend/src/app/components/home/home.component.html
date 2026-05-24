@@ -1,0 +1,91 @@
+<div class="body-home">
+    <div class="forma">
+        <div class="cabeza">
+            <p class="look" >LOOK 
+                MY 
+                <span class="colored-text">POINT</span></p>
+        </div>
+        <div class="introducction">
+            <div class="text-container">
+            <p class="text-Intro">-GALERY OF ART SHARE </p>
+            <p class="text-Intro">YOUR <span class="colored-text">ART</span> WITH </p>
+            <p class="text-Intro" style="margin-bottom: 10%;">EVERYONE </p>
+            </div>
+            <div class="btna" style="display: flex; align-items: center;"><button class="button" [routerLink]="['login']">
+                LOG-IN <i class="fa-solid fa-arrow-right"></i>
+              </button></div>
+        </div>
+        <div class="container-text">
+            <div class="container_tex1">
+                <p class="tex1">ART DOESN'T DIE IT</p>
+                <p class="tex1"> <span class="colored-text">JUST</span> CHANGES</p>
+            </div>
+            <div class="container_tex2">
+                <p class="tex2"><span class="colored-text">---></span> SHARING ART</p>
+                <p class="tex2">SINCE 2012</p>
+            </div>
+        </div>
+
+        <div class="colums" *ngIf="images.length > 0">
+            <div class="colum1">
+              <div class="cardColm-a">
+                <img [src]="images[0] === placeholderImage ? images[0] : urlAPI + images[0]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-s">
+                <img [src]="images[1] === placeholderImage ? images[1] : urlAPI + images[1]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-a">
+                <img [src]="images[2] === placeholderImage ? images[2] : urlAPI + images[2]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-s">
+                <img [src]="images[3] === placeholderImage ? images[3] : urlAPI + images[3]" class="card-img-top card-image" alt="...">
+              </div>
+            </div>
+            <div class="colum2">
+              <div class="cardColm-s">
+                <img [src]="images[4] === placeholderImage ? images[4] : urlAPI + images[4]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-a">
+                <img [src]="images[5] === placeholderImage ? images[5] : urlAPI + images[5]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-s">
+                <img [src]="images[6] === placeholderImage ? images[6] : urlAPI + images[6]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-a">
+                <img [src]="images[7] === placeholderImage ? images[7] : urlAPI + images[7]" class="card-img-top card-image" alt="...">
+              </div>
+            </div>
+            <div class="colum1">
+              <div class="cardColm-a">
+                <img [src]="images[8] === placeholderImage ? images[8] : urlAPI + images[8]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-s">
+                <img [src]="images[9] === placeholderImage ? images[9] : urlAPI + images[9]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-a">
+                <img [src]="images[10] === placeholderImage ? images[10] : urlAPI + images[10]" class="card-img-top card-image" alt="...">
+              </div>
+              <div class="cardColm-s">
+                <img [src]="images[11] === placeholderImage ? images[11] : urlAPI + images[11]" class="card-img-top card-image" alt="...">
+              </div>
+            </div>
+          </div>
+          
+        
+        
+        <div class="social-footer  text-center" style="margin-top: 90px">
+           <div style="border-top: solid 2px gray;padding-top: 20px;">
+            <a href="#" ><i class="fab fa-twitter"></i> twitter</a>
+            <a href="#"><i class="fab fa-facebook"></i> facebook</a>
+            <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+           </div>
+            
+            <div style="border-top: solid 2px gray;padding-top: 20px;">
+                <p class="designers">Designers: <a class="designers" href="https://www.instagram.com/alejaaan_/">Alejandro Chaves,</a> <a class="designers" href="https://www.instagram.com/d_vanetti_06/">Daniel Gonzalez</a></p>
+                <p class="designers">Developers: <a class="designers" href="https://www.instagram.com/_felipe_vif18/">Randy Villarreal,</a><a class="designers" href="https://www.instagram.com/_solorzano04_/">Josué Solórzano</a></p>
+                <p>&copy; 2024</p>
+            </div>
+            
+        </div>
+    </div>
+</div>

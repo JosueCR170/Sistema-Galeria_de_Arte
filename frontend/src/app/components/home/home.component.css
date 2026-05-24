@@ -1,0 +1,214 @@
+.body-home{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+.forma{
+    width: 70%;
+    height: 100%;
+    
+}
+.cabeza{
+   display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 60%;
+    background-image:  
+    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+    url('/assets/img/ella3.jpg');;
+    background-position: 30% 45% ;
+   background-size:cover;
+   background-repeat: no-repeat;
+   font-size: clamp(5em,10vw, 10em);
+}
+.look {
+    line-height: 1.2;
+    color: white;
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 0;
+   /*margin-left: 120px;*/
+    width: 200px;
+    white-space: pre-wrap;
+}
+.colored-text {
+    color: hsl(32, 54%, 69%); /* Color de texto que desees */
+  }
+  .introducction{
+    margin-bottom: 0;
+    margin-top: 60px;
+    display: flex;
+    color: white;
+
+    justify-content: space-between;
+   
+    border-bottom: solid 5px white;
+  }
+  .text-Intro{
+  font-family: "Arimo", sans-serif;
+   font-style:normal;
+    font-weight: 400;
+  font-size: clamp(1rem,3vw, 3em);
+   margin-bottom: 0;
+   line-height: 1;
+
+  }
+  
+ button {
+ --glow-color: rgb(255, 217, 176);
+ --glow-spread-color: rgba(255, 209, 123, 0.781);
+ --enhanced-glow-color: rgb(255, 229, 206);
+ --btn-color: rgb(136, 103, 61);
+ border: .25em solid var(--glow-color);
+/* padding: 1em 3em;*/
+ color: var(--glow-color);
+ font-size: 15px;
+ font-weight: bold;
+ background-color: var(--btn-color);
+ border-radius: 1em;
+ outline: none;
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+ text-shadow: 0 0 .5em var(--glow-color);
+ position: relative;
+ transition: all 0.3s;
+ height: 40px;
+ width: clamp(5rem, 9em, 14rem);
+ font-size: clamp(0.7rem, 0.5vw, 1rem); 
+}
+
+
+button::after {
+ pointer-events: none;
+ content: "";
+ position: absolute;
+ top: 120%;
+ left: 0;
+ height: 100%;
+ width: 100%;
+ background-color: var(--glow-spread-color);
+ filter: blur(2em);
+ opacity: .7;
+ transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+button:hover {
+ color: var(--btn-color);
+ background-color: var(--glow-color);
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+button:active {
+ box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+/* ------------------------------------------*/  
+
+   .container-text{
+    margin-top: 4rem;
+    width: 100%;
+    color: white;
+  }
+  .container_tex1{
+    width: 100%;
+    font-size: clamp(2em,7vw, 8em);
+     font-family: "Arimo", sans-serif;
+   font-style:normal;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .container_tex2{
+    color: gray;
+    margin-top: 9rem;
+    width: 100%;
+    font-size: clamp(2em,7vw, 8em);
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1;
+  }
+  /*-----------------------------------------------*/
+  .colums{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    width: 100%;
+    justify-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    gap:4%;
+  }
+  .colum1{
+    color: white;
+    height: 100%;
+    
+    
+  }
+  .colum2{
+    color: white;
+    height: 100%;
+  }
+  .cardColm-a{
+    margin-bottom: 5%;
+    position: relative;
+    width: 22vw;
+    height: 25vw;
+  }
+  .cardColm-s{
+    margin-bottom: 5%;
+    position: relative;
+    width: 22vw;
+    height: 10vw;
+  }
+
+  .card-image {
+    object-fit: cover;
+    
+    height: 100%;
+    border-radius: 10px;
+}
+
+  .social-footer{
+    display: flex;
+    justify-content: space-around;
+  }
+  .social-footer a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.social-footer .designers {
+    margin-top: 10px;
+    color: #ccc;
+}
+  @media screen and (max-width: 700px){
+   .cabeza{
+    height: 40%;
+   }
+   .container_tex2{
+    margin-top: 4rem;
+   }
+   .btna {
+    /* Ajusta el ancho del botón en pantallas pequeñas */
+    font-size: 0.8rem; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+}
+@media (max-width: 480px) {
+  
+}
+  }

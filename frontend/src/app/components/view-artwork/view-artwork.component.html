@@ -1,0 +1,132 @@
+<div class="view-body">
+  <div class="opacidad">
+    <div class="view-container">
+      <header class="miniMenu">
+        <div class="menu">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox" class="toggle">
+            <div class="bars" id="bar1"></div>
+            <div class="bars" id="bar2"></div>
+            <div class="bars" id="bar3"></div>
+          </label>
+          <nav class="nav">
+            <ul style="margin-bottom: 0; padding: 0 0">
+              <li><a href="/shop">Home</a></li>
+              <li class="logout"><a (click)="logOut()">Log out</a></li>
+            </ul>
+          </nav>
+          <div class="nav-left">
+            <li class="nav-item dropdown" style="list-style: none">
+              <a
+                class="nav-link dropdown-toggle user-name"
+                href="#"
+                id="DropdownUser"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >{{ user.nombreUsuario }}</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="downItem" [routerLink]="['/loginArtist']"
+                    >Be artist</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="downItem"
+                    (click)="logOut()"
+                    style="color: rgb(184, 72, 72)"
+                    >Log Out</a
+                  >
+                </li>
+                @if(user.tipoUsuario){
+                <li><a class="downItem" (click)="loadAdmin()">Admin</a></li>
+                }
+              </ul>
+            </li>
+          </div>
+        </div>
+      </header>
+      <main>
+        @if(!isLoading){
+          <div class="loader">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        }@else{
+        <div class="main-container">
+          <div class="image-container">
+            <img src="{{ urlAPI }}{{ obra.imagen }}" alt="idk" />
+          </div>
+          <div class="info-container">
+            <div class="info">
+              <div class="info-name">
+                <h1 class="card-title">{{ obra.nombre }}</h1>
+                <!--<span{{ obra.nombre }}</span>-->
+                <div class="info-item">
+                  <span class="info-label">Price:</span>
+                  <span class="info-value"
+                    ><strong>${{ obra.precio }}</strong></span
+                  >
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column">
+                <div class="info-item">
+                  @if(obra.disponibilidad){
+                  <span class="info-value venta-S"
+                    ><i class="fa-solid fa-tag"></i> On Sale</span
+                  >
+                  }@else{
+                  <span class="info-value venta-N"
+                    ><i class="fa-solid fa-tag"></i> Not Available</span
+                  >
+                  }
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Author:</span>
+                  <span class="info-value" style="font-size: 18px">{{
+                    artistName
+                  }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Size:</span>
+                  <span class="info-value" style="font-size: 18px">{{
+                    obra.tamano
+                  }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Technique:</span>
+                  <span class="info-value" style="font-size: 18px">{{
+                    obra.tecnica
+                  }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Category:</span>
+                  <span class="info-value" style="font-size: 18px">{{
+                    obra.categoria
+                  }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="btn-container">
+              <a class="back-btn" [routerLink]="['/shop']">BACK</a>
+              @if(obra.disponibilidad){
+              <button
+                class="cart-btn"
+                [routerLink]="['/shop/viewArtwork', obra.id, 'sale', obra.id]"
+              >
+                Buy
+                <div class="arrow-wrapper">
+                  <div class="arrow"></div>
+                </div>
+              </button>
+              }@else{ }
+            </div>
+          </div>
+        </div>}
+      </main>
+    </div>
+  </div>
+</div>

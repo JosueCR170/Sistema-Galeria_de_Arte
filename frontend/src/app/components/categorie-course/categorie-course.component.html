@@ -1,0 +1,201 @@
+<div class="cuerpo">
+  <div class="Torso">
+    <div
+      class="titula"
+      style="
+        max-width: 1300px;
+        width: 100%;
+        margin-top: 20px;
+        padding-left: 20px;
+      "
+    >
+      <h1 style="text-align: start">Courses </h1>
+    </div>
+
+    <div class="container-cards">
+      <div
+        class="card"
+        *ngFor="let course of filteredCourses"
+        (click)="getCourse(course)"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        <span class="material-symbols-outlined">{{
+          getIconForCategory(course.categoria)
+        }}</span>
+        <div class="textBox">
+          <div class="textContent">
+            <p class="h1">{{ course.nombre }}</p>
+          </div>
+          <div class="text-inf">
+            <p class="p" style="color: black">
+              {{ getArtistaName(course.idArtista) }}
+            </p>
+            <p class="p" style="font-weight: 500">$ {{ course.costo }}</p>
+          </div>
+          <p class="p" style="margin-top: 5px; font-weight: 500">
+            {{ getLongerNameCategory(course.categoria) }}
+          </p>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+      (hidden.bs.offcanvas)="CloseCanvas()">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">
+          {{ getLongerNameCategory(selectedCourse.categoria) }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          (click)="CloseCanvas()"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="w-100 d-flex justify-content-center">
+          <span class="material-symbols-outlined" style="font-size: 90px">{{
+            getIconForCategory(selectedCourse.categoria)
+          }}</span>
+        </div>
+        <div class="w-100 mt-3">
+          <div class="d-flex w-100 justify-content-between">
+            <p style="font-size: 18px; font-weight: 500">
+              {{ selectedCourse.nombre }}
+            </p>
+            <p
+              style="
+                font-size: 18px;
+                font-weight: 500;
+                color: rgb(164, 164, 164);
+              "
+            >
+              {{ selectedCourse.duracion | number : "1.0-0" }} hours
+            </p>
+          </div>
+          <p>{{ selectedCourse.descripcion }}</p>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            (change)="onSelect($event)"
+          >
+            <option selected>Seleccione una oferta</option>
+            <option *ngFor="let oferta of filteredOfertas" [value]="oferta.id">
+              Start {{ oferta.fechaInicio }}
+            </option>
+          </select>
+          @if(selectedOffer != null){
+          <div style="display: block; margin-top: 20px">
+            <div class="d-flex w-100 justify-content-between">
+              <p style="font-size: 16px; font-weight: 500; color: rgb(0, 0, 0)">
+                Start: {{ selectedOffer.fechaInicio }}
+              </p>
+              <p style="font-size: 16px; font-weight: 500; color: rgb(0, 0, 0)">
+                End: {{ selectedOffer.fechaFinal }}
+              </p>
+            </div>
+            <div class="w-100 d-flex justify-content-between">
+              <p>
+              Mode: <strong>{{ selectedOffer.modalidad }}</strong>
+            </p>
+            <p>
+              Quotas: <strong>{{selectedOffer.cupos}}</strong>
+            </p>
+            </div>
+            
+            @if(selectedOffer.modalidad == "Presential"){
+            <p>
+              <span style="font-weight: 600">ubicacion:</span>
+              {{ selectedOffer.ubicacion }}
+            </p>
+            }@else {
+            <p><span style="font-weight: 600">ubicacion:</span> Online</p>
+            }
+            <p style="font-weight: 600; color: #8f88ed">
+              Cost: ${{ selectedCourse.costo }}
+            </p>
+            <div class="w-100 mt-2 d-flex justify-content-center">
+              <button
+                class="cta"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <span>Enroll in the course</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Register for the course</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="modalSubCuerpo">
+                <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                  <form class="form">
+                    <p class="form-title">Buy course</p>
+                    <div class="w-100 d-flex justify-content-center mb-2">
+                      <span class="material-symbols-outlined" style="font-size: 90px">{{
+                        getIconForCategory(selectedCourse.categoria)
+                      }}</span>
+                    </div>
+                    <div class="radio-input">
+                      <label class="label">
+                        <input
+                          type="radio"
+                          id="value-1"
+                          checked=""
+                          name="value-radio"
+                          value="value-1"
+                        />
+                        <p class="text">Simpe movil</p>
+                      </label>
+                      <label class="label">
+                        <input type="radio" id="value-2" name="value-radio" value="value-2" />
+                        <p class="text">Transaction</p>
+                      </label>
+                    </div>
+                    <div class="detail-factura" style=" margin-top: 20px;">
+                      <p><strong>Course: </strong> {{ selectedCourse.nombre}}</p>
+                      <p><strong>Mode: 
+                        
+                      </strong>  {{selectedOffer ? selectedOffer.modalidad : 'Sin modalidad'}}</p>
+                      <p style="color: #8f88ed">Cost: {{ selectedCourse.costo}}</p>
+                    </div>
+                    <div style="width: 100%; display: flex; justify-content: center; ">
+                      <button class="BtnPay" (click)="createPay()">
+                      Pay
+                      <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+                    </button> 
+                    </div>
+                </form>
+                </div>
+              </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
